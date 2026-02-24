@@ -74,6 +74,32 @@ The intention of this configuration is to mix the elements on an IDE with an eve
 
 ### Toggle
 - **Toggle Line Numbers**: `<leader>nn` - Toggle relative vs absolute line numbers
-- **Turn on COQ auto complete and toggle LSP server compatibility 
+- **Turn on COQ auto complete and toggle LSP server compatibility**: `<leader>a`
 
+<br>
+
+## Plugins
+The plugins used for this configuration are:
+- **ellisonleao/gruvbox.nvim**: Colorscheme
+- **uZer/pywal16.nvim**: Pywal colorscheme
+- **nvim-lualine/lualine.nvim**: Statusline
+- **nvim-tree/nvim-web-devicons**: Pretty icons
+- **folke/which-key.nvim**: Mappings popup
+- **romgrk/barbar.nvim**: Bufferline
+- **goolord/alpha-nvim**: Pretty startup screen
+- **nvim-treesitter/nvim-treesitter**: Improved syntax highlighting
+- **mfussenegger/nvim-lint**: Async linter
+- **nvim-tree/nvim-tree.lua**: File explorer
+- **windwp/nvim-autopairs**: Auto pairs for brackets
+- **lewis6991/gitsigns.nvim**: Git signs in the gutter
+- **numToStr/Comment.nvim**: Easier commenting
+- **norcalli/nvim-colorizer.lua**: Color highlight
+- **ibhagwan/fzf-lua**: Fuzzy finder and grep
+- **numToStr/FTerm.nvim**: Floating terminal
+- **ron-rs/ron.vim**: RON syntax highlighting
+- **MeanderingProgrammer/render-markdown.nvim**: Render Markdown inline
+- **folke/twilight.nvim**: Dim surrounding text
+- **neovim/nvim-lspconfig**: LSP server configurations for autocomplete
+- **ms-jpq/coq_nvim**: Autocompletion
+- **ms-jpq/coq.artifacts**: Snippets for Coq
 
