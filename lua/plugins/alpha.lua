@@ -2,11 +2,21 @@ local alpha = require('alpha')
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
 
-
-	[[  ^  ^  ^   ^☆ ★ ☆ ___I_☆ ★ ☆ ^  ^   ^  ^  ^   ^  ^ ]],
-	[[ /|\/|\/|\ /|\ ★☆ /\-_--\ ☆ ★/|\/|\ /|\/|\/|\ /|\/|\ ]],
-	[[ /|\/|\/|\ /|\ ★ /  \_-__\☆ ★/|\/|\ /|\/|\/|\ /|\/|\ ]],
-	[[ /|\/|\/|\ /|\ 󰻀 |[]| [] | 󰻀 /|\/|\ /|\/|\/|\ /|\/|\ ]],
+	[[        ._       __          ____                                  ]],
+	[[       ;  `\\--,-' /`)    _.-'    `-._                             ]],
+	[[        \\_/    ' | /`--,'            `-.     .--....____          ]],
+	[[         /                              `._.'           `---...    ]],
+	[[         |-.   _      ;                        .-----..._______)   ]],
+	[[       ,,\\q/ (q_>'_...                      .-'                   ]],
+	[[       ===/ ; _.-'~~-             /       ,'                       ]],
+	[[       `\"\"`-'_,;  `\"\"         ___(       |                     ]],
+	[[                \\         ; /'/   \\      \\                      ]],
+	[[                 `.      //' (    ;`\\    `\\                      ]],
+	[[                 / \\    ;     `-  /  `-.  /                       ]],
+	[[                (  (;   ;     (__/    /  /                         ]],
+	[[                 \\,_)\\  ;           ,'  /                        ]],
+	[[         .-.          |  |           `--'                          ]],
+	[[        (\""_.)-._     (__,>                                       ]]
 }
 
 dashboard.section.buttons.val = {
@@ -20,10 +30,6 @@ dashboard.section.buttons.val = {
 	dashboard.button("p", "  Plugins", ":PlugInstall<CR>"),
 	dashboard.button("q", "󰅙  Quit", ":q!<CR>"),
 }
-
-dashboard.section.footer.val = function()
-  return vim.g.startup_time_ms or "[[  ]]"
-end
 
 dashboard.section.buttons.opts.hl = "Keyword"
 dashboard.opts.opts.noautocmd = true

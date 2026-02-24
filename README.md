@@ -1,118 +1,78 @@
-## Bread's guide to **Neovim** configuration
-
-#### Build off of mine, or start your own!
-
 <br>
 
-> Before starting, ensure you have:
+> For the configuration to display propperly, ensure you have:
 > - **neovim** (duh)
-> - a [patched font](https://www.nerdfonts.com/) and a terminal that supports glyphs
+> - a [patched font](https://www.nerdfonts.com/) 
+> - a terminal that supports glyphs
 
 <br> 
 
-### Quickstart with my config:
-```
-cd ~/.config/ && git clone https://github.com/BreadOnPenguins/nvim
-```
-- On first boot, run `:PlugInstall` to ensure all plugins are installed and updated with [vim-plug](https://github.com/junegunn/vim-plug)
-- Key maps are in `lua/config/mappings.lua`
-    * **Leader is bound to space**, you can press space by itself for which-key to pop up with bindings info
-- Neovim options are set in `lua/config/options.lua` with some comments for info
-- All plugin configuration is located in the `lua/plugins/` folder
-    * To add or remove plugins, modify the `Plug()` section in `init.lua` appropriately, and ensure to modify `require()` as needed for configuration.
-    * Then run `:PlugInstall` to install or `:PlugClean` to uninstall
+## Introduction
+
+The intention of this configuration is to mix the elements on an IDE with an everyday text editor, in other words its meant to stay light and usable for small tasks while having useful "IDE features" like autocompletion, file search, git integration, etc... for a better coding experience. This configuration uses [vim-plug](https://github.com/junegunn/vim-plug) to manage extensions and is forked from BreadOnPenguins [nvim configuration](https://github.com/BreadOnPenguins/nvim).
 
 <br>
 
-### Starting your own config:
+## Keybinds
 
-Yes, there are a lot of choices! But don't worry, you can easily change your mind later.
+- The leader or "super" key is space, its indicated by <leader>
 
-**1. Do you want:**
-* Minimal?
-* Power User?
-* Full IDE?
+### Buffer "Tab" Management
+- **Next Buffer**: `Shift + l` - `:bnext`
+- **Previous Buffer**: `Shift + h` - `:bprevious`
+- **Close Buffer**: `<leader>q` - `:BufferClose`
+- **Force Close Buffer**: `<leader>Q` - `:BufferClose!`
+- **Vertical Split & Open Next Buffer**: `<leader>vs` - `:vsplit<CR>:bnext<CR>`
+- **Horizontal Split & Open Next Buffer**: `<leader>hs` - `:split<CR>:bnext<CR>`
 
-An example directory structure and plugin configuration for each of those is included below.
+### Buffer Navigation & Reordering
+- **Move Buffer Left**: `Alt + h` - `<Cmd>BufferMovePrevious<CR>`
+- **Move Buffer Right**: `Alt + l` - `<Cmd>BufferMoveNext<CR>`
+- **Switch to Buffer 1-9**: 
+    - `Alt + 1-9` - `<Cmd>BufferGoto 1-9<CR>`
+- **Pin Buffer**: `Alt + p` - `<Cmd>BufferPin<CR>`
 
-**2. Choose directory structure**
-- If you prefer vimscript, use an `init.vim`
-- Otherwise, use an `init.lua`
-- If you intend to have a lot of plugins or want a neater structure, split into separate files
-    * You can always expand to more files later
+### Window Management
+- **Navigate Left**: `Ctrl + h` - `<C-w>h`
+- **Navigate Down**: `Ctrl + j` - `<C-w>j`
+- **Navigate Up**: `Ctrl + k` - `<C-w>k`
+- **Navigate Right**: `Ctrl + l` - `<C-w>l`
+- **Resize Window Up**: `F5` - `:resize +2`
+- **Resize Window Down**: `F6` - `:resize -2`
+- **Resize Window Right**: `F7` - `:vertical resize +2`
+- **Resize Window Left**: `F8` - `:vertical resize -2`
 
-**3. Pick plugin manager**
-- [vim-plug](https://github.com/junegunn/vim-plug) is a minimal option
-- [lazy.nvim](https://github.com/folke/lazy.nvim) is more feature-rich
-- or [several other choices](https://github.com/rockerBOO/awesome-neovim?tab=readme-ov-file#plugin-manager)
+### FZF and Grep
+- **Search CWD**: `<leader>f` - `:lua require('fzf-lua').files()`
+- **Search Home Directory**: `<leader>Fh` - `:lua require('fzf-lua').files({ cwd = '~/' })`
+- **Search Above Directory**: `<leader>Ff` - `:lua require('fzf-lua').files({ cwd = '..' })`
+- **Resume Last Search**: `<leader>Fr` - `:lua require('fzf-lua').resume()`
+- **Grep**: `<leader>g` - `:lua require('fzf-lua').grep()`
+- **Grep Word Under Cursor**: `<leader>G` - `:lua require('fzf-lua').grep_cword()`
 
-**4. Pick plugins** 
-- [Awesome neovim plugins list](https://github.com/rockerBOO/awesome-neovim)
-- See below for a rough guide on types of plugins
+### Miscellaneous
+- **Replace All**: `<leader>s` - `:%s//g<Left><Left>`
+- **Open File Explorer**: `<leader>t` - `:NvimTreeToggle`
+- **Cycle Themes**: `<leader>p` - `switch_theme`
+- **Open Terminal**: `<leader>z` - `:lua require('FTerm').open()`
+- **Close FTerm in Terminal Mode**: `Esc` - `<C-\><C-n><CMD>lua require("FTerm").close()`
+- **Save File**: `<leader>w` - `:w`
+- **Duplicate File**: `<leader>d` - `:w `
+- **Make File Executable**: `<leader>x` - `<cmd>!chmod +x %<CR>`
+- **Move File**: `<leader>mv` - `:!mv % `
+- **Reload Neovim Config**: `<leader>R` - `:so %`
+- **Open URL Under Cursor**: `<leader>u` - `:silent !xdg-open "<cWORD>" &`
+- **Auto Indent Selection**: `<leader>i` - `=gv`
+- **Toggle Wrap**: `<leader>W` - `:set wrap!`
+- **Toggle Twilight**: `<leader>l` - `:Twilight`
 
-**5. Set mappings, options, and plugin config**
-- Use `:help options` or browse [here](https://neovim.io/doc/user/options.html)
-- You don't *always* need to configure plugins: most have sensible defaults, and you can set as few or as many opts as you wish.
-<br><br>
-### the Minimalist (better text editor)
-```
-~/.config/nvim/
-└── init.vim
-```
+### Htop in Terminal
+- **Toggle Htop**: `<leader>H` - Toggle in terminal
 
-Plugins might include:
-- File tree
-- Fuzzy finder
-- Comment quick toggle
-- Surround editing
-- Better syntax highlighting
-- Probably a color scheme and status line
-<br><br>
-### the Power User
-```
-~/.config/nvim/
-├── init.lua
-└── lua
-    ├── core
-    │   ├── keymaps.lua
-    │   └── options.lua
-    └── plugins
-        └── plugin.lua
-        └── configs.lua
-```
+### Quick Make
+- **Quick Make**: `<leader>ma` - `!sudo make uninstall && sudo make clean install %` in buffer's directory
 
-Plugins might include:
-- Everything above, AND
-- LSP & autocompletion
-- Snippets
-- Git integration
-- Faster motions, window management
-- Terminal integration
-- Project and session management
-- Tabline and cursorline
-<br><br>
-### full IDE (do you even need this guide?)
-```
-~/.config/nvim/
-├── init.lua
-├── lazy-lock.json
-└── lua
-    ├── core
-    │   ├── keymaps.lua
-    │   ├── options.lua
-    │   └── plugins.lua
-    ├── plugins
-    │   └── lots.lua
-    │   └── of.lua
-    │   └── plugin.lua
-    │   └── configs.lua
-    └── UltiSnips
-        └── tex.snippets
-```
+### Toggle Line Numbers
+- **Toggle Line Numbers**: `<leader>nn` - Toggle relative vs absolute line numbers
 
-Plugins might include:
-- Everything above, AND
-- Debugging
-- Code runners
-- Remote development
-- Refactoring
+
