@@ -72,7 +72,8 @@ The intention of this configuration is to mix the elements on an IDE with an eve
 ### Quick Make
 - **Quick Make**: `<leader>ma` - `!sudo make uninstall && sudo make clean install %` in buffer's directory
 
-### Toggle Line Numbers
+### Toggle
 - **Toggle Line Numbers**: `<leader>nn` - Toggle relative vs absolute line numbers
+- **Turn on COQ auto complete and toggle LSP server compatibility 
 
 

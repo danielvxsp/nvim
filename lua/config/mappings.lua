@@ -85,3 +85,6 @@ map("n", "<leader>nn", function() --toggle relative vs absolute line numbers
 		vim.wo.relativenumber = true
 	end
 end)
+
+-- Keybinds for toggling advanced autocomplete
+vim.api.nvim_set_keymap('n', '<leader>a', ':lua ToggleAdvAuto()<CR>', { noremap = true, silent = true })
