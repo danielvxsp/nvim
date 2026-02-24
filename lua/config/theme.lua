@@ -13,7 +13,7 @@ _G.load_theme = function()
 end
 
 local themes = { --add more themes here, if installed
-	{ "catppuccin", "catppuccin" },
+	{ "everforest", "everforest" },
 	{ "gruvbox", "gruvbox" },
 	{ "pywal16", "pywal16-nvim" },
 }
