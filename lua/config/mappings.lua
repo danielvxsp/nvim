@@ -70,10 +70,20 @@ map("n", "<leader>H", function() --toggle htop in term
 end)
 
 
-map("n", "<leader>ma", function() --quick make in dir of buffer
-	local bufdir = vim.fn.expand("%:p:h")
-	vim.cmd("lcd " .. bufdir)
-	vim.cmd("!sudo make uninstall && sudo make clean install %")
+map("n", "<leader>ma", function()
+    local bufdir = vim.fn.expand("%:p:h")
+    
+    local password = vim.fn.inputsecret("Sudo password: ")
+    if password == "" then return end
+
+    vim.cmd("lcd " .. bufdir) -- changes the directory for the current window
+    local cmd = string.format("!echo %s | sudo -S make uninstall && echo %s | sudo -S make clean install", 
+        vim.fn.shellescape(password), 
+        vim.fn.shellescape(password))
+    
+    vim.cmd(cmd)
+
+    vim.fn.histdel(":", -1)
 end)
 
 
