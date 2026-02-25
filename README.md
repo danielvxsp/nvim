@@ -15,7 +15,7 @@ The intention of this configuration is to mix the elements on an IDE with an eve
 
 ## Keybinds
 
-- The leader or "super" key is space, its indicated by <leader>
+- The leader or "super" key is space, its indicated by `<leader>`
 
 ### Buffer "Tab" Management
 - **Next Buffer**: `Shift + l` - `:bnext`
