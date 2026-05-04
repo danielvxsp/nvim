@@ -41,6 +41,7 @@ Plug('folke/twilight.nvim') --surrounding dim
 Plug('neovim/nvim-lspconfig') --LSP server configurations for autocomplete
 Plug('ms-jpq/coq_nvim', { branch = 'coq' }) -- autocompletion
 Plug('ms-jpq/coq.artifacts', { branch = 'artifacts' }) -- "snippets"
+Plug('lukas-reineke/indent-blankline.nvim') -- indent visualizer
 
 vim.call('plug#end')
 
@@ -50,6 +51,7 @@ require("config.mappings")
 require("config.options")
 require("config.autocmd")
 require("config.coq_config")
+require("config.indentblankline")
 
 require("plugins.alpha")
 -- require("plugins.autopairs")

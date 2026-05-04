@@ -21,8 +21,10 @@ local options = {
 
 	smarttab = true, --indentation stuff
 	cindent = true,
-	autoindent = false,
+	autoindent = true,
 	tabstop = 4, --visual width of tab
+    shiftwidth = 4,    -- Number of spaces inserted for auto-indenting
+    expandtab = true,  -- Converts tab key into spaces instead of a tab char
 
 	foldmethod = "expr",
 	foldlevel = 99, --disable folding, lower #s enable
