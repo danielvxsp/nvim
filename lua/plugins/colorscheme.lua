@@ -1,6 +1,6 @@
 require("everforest").setup({
     background = "hard",
-    transparent_background_level = 0,
+    transparent_background_level = 1,
     italics = true,
     disable_italic_comments = false,
     inlay_hints_background = "dimmed",
