@@ -39,8 +39,6 @@ Plug('ron-rs/ron.vim') --ron syntax highlighting
 Plug('MeanderingProgrammer/render-markdown.nvim') --render md inline
 Plug('folke/twilight.nvim') --surrounding dim
 Plug('neovim/nvim-lspconfig') --LSP server configurations for autocomplete
-Plug('ms-jpq/coq_nvim', { branch = 'coq' }) -- autocompletion
-Plug('ms-jpq/coq.artifacts', { branch = 'artifacts' }) -- "snippets"
 Plug('lukas-reineke/indent-blankline.nvim') -- indent visualizer
 
 vim.call('plug#end')
@@ -50,7 +48,7 @@ require("config.theme")
 require("config.mappings")
 require("config.options")
 require("config.autocmd")
-require("config.coq_config")
+require("config.lsp")
 require("config.indentblankline")
 
 require("plugins.alpha")
